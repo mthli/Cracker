@@ -1,6 +1,19 @@
 <resources>
 
     <!-- AndroidAgo -->
-	<string name="just_now">Just Now</string>
+    <string name="just_now">Just Now</string>
+
+    <!-- Header -->
+    <string name="header_service_description">
+        Run service to handle crash
+    </string>
+    <string name="header_notification_description">
+        Show notification at status bar
+    </string>
+
+    <!-- Menu -->
+    <string name="main_menu_clear">Clear</string>
+    <string name="main_menu_about">About</string>
+
 
 </resources>

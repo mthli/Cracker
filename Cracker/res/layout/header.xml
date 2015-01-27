@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/background">
+
+    <RelativeLayout android:id="@+id/header_service"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="12dp">
+
+        <Switch android:id="@+id/header_service_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_alignParentRight="true">
+        </Switch>
+
+        <TextView android:id="@+id/header_service_description"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_centerInParent="true"
+                  android:layout_alignParentLeft="true"
+                  android:layout_toLeftOf="@id/header_service_switch"
+                  android:text="@string/header_service_description"
+                  android:textColor="@color/text"
+                  android:textSize="18sp"
+                  android:singleLine="true"
+                  android:ellipsize="end">
+        </TextView>
+
+    </RelativeLayout>
+
+    <View android:id="@+id/header_line"
+          android:layout_width="match_parent"
+          android:layout_height="1dp"
+          android:background="@color/dividers">
+    </View>
+
+    <RelativeLayout android:id="@+id/header_notification"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="12dp">
+
+        <Switch android:id="@+id/header_notification_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_alignParentRight="true">
+        </Switch>
+
+        <TextView android:id="@+id/header_notification_description"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_centerInParent="true"
+                  android:layout_alignParentLeft="true"
+                  android:layout_toLeftOf="@id/header_notification_switch"
+                  android:text="@string/header_notification_description"
+                  android:textColor="@color/text"
+                  android:textSize="18sp"
+                  android:singleLine="true"
+                  android:ellipsize="end">
+        </TextView>
+
+    </RelativeLayout>
+
+</LinearLayout>
