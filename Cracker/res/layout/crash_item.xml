@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/background">
+
+    <ImageView android:id="@+id/crash_item_icon"
+               android:contentDescription="@null"
+               android:layout_width="48dp"
+               android:layout_height="48dp"
+               android:src="@drawable/ic_launcher"
+               android:layout_gravity="center"
+               android:layout_margin="15dp"
+               android:background="@color/background">
+    </ImageView>
+
+    <LinearLayout android:orientation="vertical"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_gravity="center"
+                  android:layout_marginTop="15dp"
+                  android:layout_marginBottom="15dp"
+                  android:layout_marginRight="15dp">
+
+        <RelativeLayout android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+            
+            <com.github.curioustechizen.ago.RelativeTimeTextView
+                    android:id="@+id/crash_item_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentRight="true"
+                    android:paddingLeft="5dp"
+                    android:textColor="@color/hint"
+                    android:textSize="12sp"
+                    android:singleLine="true"
+                    android:ellipsize="end">
+            </com.github.curioustechizen.ago.RelativeTimeTextView>
+
+            <TextView android:id="@+id/crash_item_title"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_centerInParent="true"
+                      android:layout_alignParentLeft="true"
+                      android:layout_toLeftOf="@id/crash_item_time"
+                      android:textColor="@color/text"
+                      android:textSize="16sp"
+                      android:singleLine="true"
+                      android:ellipsize="end">
+            </TextView>
+
+        </RelativeLayout>
+
+        <TextView android:id="@+id/crash_item_content"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:textColor="@color/secondary_text"
+                  android:textSize="14sp"
+                  android:maxLines="2"
+                  android:ellipsize="end">
+        </TextView>
+
+    </LinearLayout>
+
+</LinearLayout>

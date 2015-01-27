@@ -13,10 +13,9 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        View header = LayoutInflater.from(this).inflate(R.layout.header, null, false);
+        // TODO
 
-        ListView listView = (ListView) findViewById(R.id.main_listview);
-        listView.addHeaderView(header);
+        initUI();
     }
 
     @Override
@@ -39,5 +38,14 @@ public class MainActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(menuItem);
+    }
+
+    private void initUI() {
+        View header = LayoutInflater.from(this).inflate(R.layout.header, null, false);
+
+        ListView listView = (ListView) findViewById(R.id.main_listview);
+        listView.addHeaderView(header);
+
+        // TODO
     }
 }

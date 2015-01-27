@@ -9,7 +9,7 @@
     <RelativeLayout android:id="@+id/header_service"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="12dp">
+                    android:layout_margin="15dp">
 
         <Switch android:id="@+id/header_service_switch"
                 android:layout_width="wrap_content"
@@ -42,7 +42,7 @@
     <RelativeLayout android:id="@+id/header_notification"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="12dp">
+                    android:layout_margin="15dp">
 
         <Switch android:id="@+id/header_notification_switch"
                 android:layout_width="wrap_content"
@@ -59,7 +59,7 @@
                   android:layout_toLeftOf="@id/header_notification_switch"
                   android:text="@string/header_notification_description"
                   android:textColor="@color/text"
-                  android:textSize="18sp"
+                  android:textSize="16sp"
                   android:singleLine="true"
                   android:ellipsize="end">
         </TextView>
