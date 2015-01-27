@@ -7,6 +7,9 @@
     <string name="main_header_description">
         Run service to handle crash
     </string>
+    <string name="main_empty">
+        Current list is empty.
+    </string>
 
     <!-- Menu -->
     <string name="main_menu_clear">Clear</string>

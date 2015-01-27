@@ -4,10 +4,8 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.*;
-import android.widget.AdapterView;
-import android.widget.CompoundButton;
-import android.widget.ListView;
-import android.widget.Switch;
+import android.widget.*;
+import io.github.mthli.Cracker.Crash.CrashAction;
 import io.github.mthli.Cracker.Crash.CrashAdapter;
 import io.github.mthli.Cracker.Crash.CrashItem;
 import io.github.mthli.Cracker.R;
@@ -19,8 +17,7 @@ public class MainActivity extends Activity {
     private SharedPreferences preferences;
     private SharedPreferences.Editor editor;
 
-    private ListView listView;
-    private CrashAdapter crashAdapter;
+    private CrashAdapter adapter;
     private List<CrashItem> list = new ArrayList<CrashItem>();
 
     @Override
@@ -44,7 +41,14 @@ public class MainActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.main_menu_clear:
-                // TODO
+                CrashAction action = new CrashAction(this);
+                action.open(true);
+                action.clear();
+                action.close();
+
+                list.clear();
+                adapter.notifyDataSetChanged();
+                
                 break;
             case R.id.main_menu_about:
                 // TODO
@@ -68,9 +72,20 @@ public class MainActivity extends Activity {
 
         ListView listView = (ListView) findViewById(R.id.main_listview);
 
-        crashAdapter = new CrashAdapter(this, R.layout.crash_item, list);
-        listView.setAdapter(crashAdapter);
-        crashAdapter.notifyDataSetChanged();
+        TextView empty = (TextView) findViewById(R.id.main_empty);
+        listView.setEmptyView(empty);
+
+        adapter = new CrashAdapter(this, R.layout.crash_item, list);
+        listView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+
+        CrashAction action = new CrashAction(this);
+        action.open(false);
+        for (CrashItem item : action.list()) {
+            list.add(item);
+        }
+        action.close();
+        adapter.notifyDataSetChanged();
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

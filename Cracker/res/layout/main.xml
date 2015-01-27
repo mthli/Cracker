@@ -47,8 +47,6 @@
           android:background="@color/dividers">
     </View>
 
-    <!-- TODO -->
-
     <ListView android:id="@+id/main_listview"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
@@ -60,5 +58,18 @@
               android:choiceMode="singleChoice"
               android:drawSelectorOnTop="true">
     </ListView>
+
+    <TextView android:id="@+id/main_empty"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_centerInParent="true"
+              android:layout_below="@id/main_line"
+              android:layout_margin="15dp"
+              android:gravity="center"
+              android:text="@string/main_empty"
+              android:textColor="@color/hint"
+              android:textSize="14sp"
+              android:visibility="gone">
+    </TextView>
 
 </RelativeLayout>
