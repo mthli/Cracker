@@ -2,6 +2,8 @@
 
 <resources>
 
-    <!-- TODO -->
+    <string name="receiver_intent_action">
+        io.github.mthli.Cracker.Activity.RECEIVER
+    </string>
 
 </resources>

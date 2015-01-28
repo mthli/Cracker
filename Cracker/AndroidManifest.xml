@@ -7,11 +7,14 @@
     <uses-sdk android:minSdkVersion="14" />
 
     <application android:label="@string/app_name"
-                 android:icon="@drawable/ic_launcher">
+                 android:icon="@drawable/ic_launcher"
+                 android:allowBackup="true"
+                 android:largeHeap="true">
 
-        <!-- MainActivity -->
-        <activity android:name=".Activity.MainActivity"
+        <!-- CrackerActivity -->
+        <activity android:name=".Activity.CrackerActivity"
                   android:label="@string/app_name"
+                  android:icon="@drawable/ic_launcher"
                   android:theme="@style/MainActivityTheme">
 
             <intent-filter>
@@ -23,6 +26,15 @@
             </intent-filter>
 
         </activity>
+
+        <!-- DetailActivity -->
+        <!-- TODO -->
+
+        <!-- CrackerService -->
+        <service android:name=".Service.CrackerService"
+                 android:label="@string/app_name"
+                 android:icon="@drawable/ic_launcher">
+        </service>
 
     </application>
 
