@@ -81,15 +81,6 @@ public class CrackerActivity extends Activity {
     }
 
     @Override
-    public boolean onKeyDown(int keyCode, KeyEvent keyEvent) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            unregisterReceiver(receiver);
-            finish();
-        }
-        return true;
-    }
-
-    @Override
     public void onDestroy() {
         unregisterReceiver(receiver);
         super.onDestroy();
