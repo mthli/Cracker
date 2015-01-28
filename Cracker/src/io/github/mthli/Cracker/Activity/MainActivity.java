@@ -48,7 +48,7 @@ public class MainActivity extends Activity {
 
                 list.clear();
                 adapter.notifyDataSetChanged();
-                
+
                 break;
             case R.id.main_menu_about:
                 // TODO

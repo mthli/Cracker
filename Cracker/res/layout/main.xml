@@ -15,8 +15,8 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginTop="25dp"
-                android:layout_marginBottom="25dp"
+                android:layout_marginTop="21dp"
+                android:layout_marginBottom="21dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp">
         </Switch>
@@ -27,8 +27,8 @@
                   android:layout_centerInParent="true"
                   android:layout_alignParentLeft="true"
                   android:layout_toLeftOf="@id/main_header_switch"
-                  android:layout_marginTop="25dp"
-                  android:layout_marginBottom="25dp"
+                  android:layout_marginTop="21dp"
+                  android:layout_marginBottom="21dp"
                   android:layout_marginLeft="15dp"
                   android:layout_marginRight="15dp"
                   android:text="@string/main_header_description"
