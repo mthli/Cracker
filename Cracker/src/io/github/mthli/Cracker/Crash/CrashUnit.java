@@ -6,24 +6,7 @@ import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 
 public class CrashUnit {
-    public static final String TABLE = "CRASH";
-
-    public static final String PACKAGE_NAME = "PACKAGE_NAME";
-    public static final String TIME = "TIME";
-    public static final String CONTENT = "CONTENT";
-
-    public static final String CREATE_SQL = "CREATE TABLE "
-            + TABLE
-            + " ("
-            + " " + PACKAGE_NAME + " text,"
-            + " " + TIME + " integer,"
-            + " " + CONTENT + " text"
-            + ")";
-
-    // TODO
-    public static String getPackageName(String content) {
-        return null;
-    }
+    public static final int NOTIFICATION_ID = 0x100;
 
     public static Drawable getAppIcon(Context context, String packageName) {
         PackageManager manager = context.getPackageManager();

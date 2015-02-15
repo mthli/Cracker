@@ -5,15 +5,15 @@
 
     <!-- Main -->
     <string name="main_header_description">
-        Run service to handle crash
+        Show notifications on status bar
     </string>
-    <!-- TODO -->
     <string name="main_empty">
         Current list is empty.
     </string>
 
     <!-- Menu -->
     <string name="main_menu_clear">Clear</string>
+    <string name="main_menu_refresh">Refresh</string>
     <string name="main_menu_about">About</string>
 
 </resources>

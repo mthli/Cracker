@@ -2,10 +2,15 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <item android:id="@+id/main_menu_refresh"
+          android:title="@string/main_menu_refresh"
+          android:icon="@drawable/ic_action_refresh"
+          android:showAsAction="ifRoom">
+    </item>
+
     <item android:id="@+id/main_menu_clear"
           android:title="@string/main_menu_clear"
-          android:icon="@drawable/ic_action_clear"
-          android:showAsAction="ifRoom">
+          android:showAsAction="collapseActionView">
     </item>
 
     <item android:id="@+id/main_menu_about"

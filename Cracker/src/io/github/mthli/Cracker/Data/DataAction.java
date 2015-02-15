@@ -1,66 +1,67 @@
-package io.github.mthli.Cracker.Crash;
+package io.github.mthli.Cracker.Data;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import io.github.mthli.Cracker.Crash.CrashItem;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CrashAction {
+public class DataAction {
     private SQLiteDatabase database;
-    private CrashHelper helper;
+    private DataHelper dataHelper;
 
-    public CrashAction(Context context) {
-        this.helper = new CrashHelper(context);
+    public DataAction(Context context) {
+        this.dataHelper = new DataHelper(context);
     }
 
     public void open(boolean rw) {
         if (rw) {
-            database = helper.getWritableDatabase();
+            database = dataHelper.getWritableDatabase();
         } else {
-            database = helper.getReadableDatabase();
+            database = dataHelper.getReadableDatabase();
         }
     }
 
     public void close() {
-        helper.close();
+        dataHelper.close();
     }
 
     public void add(CrashItem item) {
         ContentValues values = new ContentValues();
 
-        values.put(CrashUnit.PACKAGE_NAME, item.getPackageName());
-        values.put(CrashUnit.TIME, item.getTime());
-        values.put(CrashUnit.CONTENT, item.getContent());
+        values.put(DataUnit.PACKAGE_NAME, item.getPackageName());
+        values.put(DataUnit.TIME, item.getTime());
+        values.put(DataUnit.CONTENT, item.getContent());
 
-        database.insert(CrashUnit.TABLE, null, values);
+        database.insert(DataUnit.TABLE, null, values);
     }
 
     public void clear() {
-        database.execSQL("DELETE FROM " + CrashUnit.TABLE);
+        database.execSQL("DELETE FROM " + DataUnit.TABLE);
     }
 
     private CrashItem get(Cursor cursor) {
-        CrashItem item = new CrashItem();
+        CrashItem crashItem = new CrashItem();
 
-        item.setPackageName(cursor.getString(0));
-        item.setTime(cursor.getLong(1));
-        item.setContent(cursor.getString(2));
+        crashItem.setPackageName(cursor.getString(0));
+        crashItem.setTime(cursor.getLong(1));
+        crashItem.setContent(cursor.getString(2));
 
-        return item;
+        return crashItem;
     }
 
     public List<CrashItem> list() {
         List<CrashItem> list = new ArrayList<CrashItem>();
 
         Cursor cursor = database.query(
-                CrashUnit.TABLE,
+                DataUnit.TABLE,
                 new String[] {
-                        CrashUnit.PACKAGE_NAME,
-                        CrashUnit.TIME,
-                        CrashUnit.CONTENT
+                        DataUnit.PACKAGE_NAME,
+                        DataUnit.TIME,
+                        DataUnit.CONTENT
                 },
                 null,
                 null,

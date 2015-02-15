@@ -1,36 +1,21 @@
 package io.github.mthli.Cracker.Activity;
 
 import android.app.Activity;
+import android.app.NotificationManager;
 import android.content.*;
 import android.os.Bundle;
 import android.view.*;
 import android.widget.*;
-import io.github.mthli.Cracker.Crash.CrashAction;
+import io.github.mthli.Cracker.Crash.CrashUnit;
+import io.github.mthli.Cracker.Data.DataAction;
 import io.github.mthli.Cracker.Crash.CrashAdapter;
 import io.github.mthli.Cracker.Crash.CrashItem;
 import io.github.mthli.Cracker.R;
-import io.github.mthli.Cracker.Service.CrackerService;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CrackerActivity extends Activity {
-    protected class UpdateReceiver extends BroadcastReceiver {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            list.clear();
-            CrashAction action = new CrashAction(context);
-            action.open(false);
-            for (CrashItem item : action.list()) {
-                list.add(item);
-            }
-            action.close();
-            adapter.notifyDataSetChanged();
-        }
-    }
-    private UpdateReceiver receiver;
-    private Intent intent;
-
+public class MainActivity extends Activity {
     private SharedPreferences preferences;
     private SharedPreferences.Editor editor;
 
@@ -45,10 +30,10 @@ public class CrackerActivity extends Activity {
         preferences = getSharedPreferences(getString(R.string.sp_cracker), MODE_PRIVATE);
         editor = preferences.edit();
 
-        intent = new Intent(this, CrackerService.class);
+        NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        manager.cancel(CrashUnit.NOTIFICATION_ID);
 
         initUI();
-        initReceiver();
     }
 
     @Override
@@ -59,16 +44,24 @@ public class CrackerActivity extends Activity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem menuItem) {
+        DataAction action = new DataAction(this);
+
         switch (menuItem.getItemId()) {
+            case R.id.main_menu_refresh:
+                action.open(true);
+                list.clear();
+                for (CrashItem item : action.list()) {
+                    list.add(item);
+                }
+                action.close();
+                adapter.notifyDataSetChanged();
+                break;
             case R.id.main_menu_clear:
-                CrashAction action = new CrashAction(this);
                 action.open(true);
                 action.clear();
                 action.close();
-
                 list.clear();
                 adapter.notifyDataSetChanged();
-
                 break;
             case R.id.main_menu_about:
                 // TODO
@@ -82,25 +75,18 @@ public class CrackerActivity extends Activity {
 
     @Override
     public void onDestroy() {
-        unregisterReceiver(receiver);
         super.onDestroy();
     }
 
     private void initUI() {
-        Switch service = (Switch) findViewById(R.id.main_header_switch);
-        service.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        Switch switcher = (Switch) findViewById(R.id.main_header_switch);
+        switcher.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean check) {
-                editor.putBoolean(getString(R.string.sp_service), check).commit();
-
-                if (check) {
-                    startService(intent);
-                } else {
-                    stopService(intent);
-                }
+                editor.putBoolean(getString(R.string.sp_notification), check).commit();
             }
         });
-        service.setChecked(preferences.getBoolean(getString(R.string.sp_service), false));
+        switcher.setChecked(preferences.getBoolean(getString(R.string.sp_notification), false));
 
         ListView listView = (ListView) findViewById(R.id.main_listview);
 
@@ -111,8 +97,9 @@ public class CrackerActivity extends Activity {
         listView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 
-        CrashAction action = new CrashAction(this);
+        DataAction action = new DataAction(this);
         action.open(false);
+        list.clear();
         for (CrashItem item : action.list()) {
             list.add(item);
         }
@@ -125,12 +112,5 @@ public class CrackerActivity extends Activity {
                 // TODO
             }
         });
-    }
-
-    private void initReceiver() {
-        receiver = new UpdateReceiver();
-        IntentFilter filter = new IntentFilter();
-        filter.addAction(getString(R.string.receiver_intent_action));
-        registerReceiver(receiver, filter);
     }
 }

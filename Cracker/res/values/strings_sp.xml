@@ -5,8 +5,8 @@
     <string name="sp_cracker">
         SP_CRACKER
     </string>
-    <string name="sp_service">
-        SP_SERVICE
+    <string name="sp_notification">
+        SP_NOTIFICATION
     </string>
 
 </resources>

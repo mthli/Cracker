@@ -3,5 +3,9 @@
 <resources>
 
     <string name="app_name">Cracker</string>
+    <string name="app_description">
+        Caught UncaughtException when your app crash.
+    </string>
+    <string name="app_receiver">Receiver</string>
 
 </resources>
