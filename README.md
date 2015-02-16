@@ -9,6 +9,10 @@ To use this App you need to install [Xposed](https://github.com/rovo89/Xposed "X
 
 ![screenshot.png](/Art/screenshot.png "screenshot.png")
 
+## How to get the APK?
+
+Search `Cracker` in __Xposed Installer__ or go to the [release page](https://github.com/mthli/Cracker/releases "release page").
+
 ## How to use the source code?
 
 Just __import__ the `Cracker` folder with your __IntelliJ IDEA__.
