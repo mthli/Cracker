@@ -43,15 +43,15 @@ public class MainActivity extends Activity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem menuItem) {
+    public boolean onOptionsItemSelected(MenuItem item) {
         DataAction action = new DataAction(this);
 
-        switch (menuItem.getItemId()) {
+        switch (item.getItemId()) {
             case R.id.main_menu_refresh:
                 action.open(true);
                 list.clear();
-                for (CrashItem item : action.list()) {
-                    list.add(item);
+                for (CrashItem i : action.list()) {
+                    list.add(i);
                 }
                 action.close();
                 adapter.notifyDataSetChanged();
@@ -70,12 +70,7 @@ public class MainActivity extends Activity {
                 break;
         }
 
-        return super.onOptionsItemSelected(menuItem);
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
+        return super.onOptionsItemSelected(item);
     }
 
     private void initUI() {
@@ -88,10 +83,11 @@ public class MainActivity extends Activity {
         });
         switcher.setChecked(preferences.getBoolean(getString(R.string.sp_notification), false));
 
-        ListView listView = (ListView) findViewById(R.id.main_listview);
+        final ListView listView = (ListView) findViewById(R.id.main_listview);
 
         TextView empty = (TextView) findViewById(R.id.main_empty);
         listView.setEmptyView(empty);
+        registerForContextMenu(listView);
 
         adapter = new CrashAdapter(this, R.layout.crash_item, list);
         listView.setAdapter(adapter);
@@ -108,9 +104,43 @@ public class MainActivity extends Activity {
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                // TODO
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+                intent.putExtra(getString(R.string.detain_intent_content), list.get(position).getContent());
+                startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View view, ContextMenu.ContextMenuInfo info) {
+        super.onCreateContextMenu(menu, view, info);
+        getMenuInflater().inflate(R.menu.context_menu, menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        switch (item.getItemId()) {
+            case R.id.context_menu_delete:
+                DataAction action = new DataAction(this);
+                action.open(true);
+                action.delete(list.get(info.position));
+                action.close();
+                list.remove(info.position);
+                adapter.notifyDataSetChanged();
+                break;
+            case R.id.context_menu_share:
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_TEXT, list.get(info.position).getContent());
+                startActivity(Intent.createChooser(intent, getString(R.string.share_label)));
+                break;
+            default:
+                break;
+        }
+
+        return super.onContextItemSelected(item);
     }
 }

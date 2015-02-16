@@ -4,4 +4,8 @@
         <!-- Do nothing -->
     </style>
 
+    <style name="DetailActivityTheme" parent="android:Theme.DeviceDefault.Light.DarkActionBar">
+        <!-- Do nothing -->
+    </style>
+
 </resources>

@@ -69,18 +69,21 @@ public class Receiver extends BroadcastReceiver {
         }
 
         StringBuilder builder = new StringBuilder();
-        builder.append(throwable.toString() + "\n");
+        String string = throwable.toString() + "\n";
+        builder.append(string);
 
         StackTraceElement[] elements = throwable.getStackTrace();
         if (elements != null) {
             for (StackTraceElement element : elements) {
-                builder.append("\tat " + element.toString() + "\n");
+                string = "    at " + element.toString() + "\n";
+                builder.append(string);
             }
         }
 
         Throwable cause = throwable.getCause();
         if (cause != null) {
-            builder.append("Caused by: " + getContent(cause));
+            string = "Caused by: " + getContent(cause);
+            builder.append(string);
         }
 
         return builder.toString();

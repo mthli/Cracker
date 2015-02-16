@@ -2,6 +2,8 @@
 
 <resources>
 
-    <!-- TODO -->
+    <string name="detain_intent_content">
+        DETAIL_INTENT_CONTENT
+    </string>
 
 </resources>

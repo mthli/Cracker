@@ -19,7 +19,6 @@ public class Hook implements IXposedHookLoadPackage {
             @Override
             protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
                 super.beforeHookedMethod(param);
-
                 hookUncaughtException((Application) param.thisObject);
             }
         });

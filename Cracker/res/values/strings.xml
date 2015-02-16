@@ -3,6 +3,9 @@
     <!-- AndroidAgo -->
     <string name="just_now">Just Now</string>
 
+    <!-- Detail -->
+    <string name="detail_label">Detail</string>
+
     <!-- Main -->
     <string name="main_header_description">
         Show notifications on status bar
@@ -15,5 +18,11 @@
     <string name="main_menu_clear">Clear</string>
     <string name="main_menu_refresh">Refresh</string>
     <string name="main_menu_about">About</string>
+    <string name="context_menu_delete">Delete</string>
+    <string name="context_menu_share">Share</string>
+    <string name="detail_menu_share">Share</string>
+
+    <!-- Share -->
+    <string name="share_label">Share</string>
 
 </resources>

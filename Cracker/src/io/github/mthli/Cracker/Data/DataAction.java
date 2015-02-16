@@ -39,6 +39,10 @@ public class DataAction {
         database.insert(DataUnit.TABLE, null, values);
     }
 
+    public void delete(CrashItem item) {
+        database.execSQL("DELETE FROM "+ DataUnit.TABLE + " WHERE " + DataUnit.TIME + " = " + item.getTime());
+    }
+
     public void clear() {
         database.execSQL("DELETE FROM " + DataUnit.TABLE);
     }
@@ -67,7 +71,7 @@ public class DataAction {
                 null,
                 null,
                 null,
-                null
+                DataUnit.TIME + " desc"
         );
 
         if (cursor == null) {

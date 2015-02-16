@@ -30,12 +30,18 @@
         <!-- MainActivity -->
         <activity android:name=".Activity.MainActivity"
                   android:label="@string/app_name"
-                  android:icon="@drawable/ic_launcher"
                   android:theme="@style/MainActivityTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <!-- DetailActivity -->
+        <activity android:name=".Activity.DetailActivity"
+                  android:label="@string/detail_label"
+                  android:screenOrientation="landscape"
+                  android:theme="@style/DetailActivityTheme">
         </activity>
 
     </application>
