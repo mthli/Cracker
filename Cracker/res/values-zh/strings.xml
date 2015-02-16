@@ -1,0 +1,32 @@
+<resources>
+
+    <!-- About -->
+    <string name="about_label">关于</string>
+    <string name="about_ok">好的</string>
+
+    <!-- AndroidAgo -->
+    <string name="just_now">刚刚</string>
+
+    <!-- Detail -->
+    <string name="detail_label">详情</string>
+
+    <!-- Main -->
+    <string name="main_header_description">
+        通知栏显示
+    </string>
+    <string name="main_empty">
+        当前列表为空。
+    </string>
+
+    <!-- Menu -->
+    <string name="main_menu_refresh">刷新</string>
+    <string name="main_menu_clear">清除</string>
+    <string name="main_menu_about">关于</string>
+    <string name="context_menu_delete">删除</string>
+    <string name="context_menu_share">分享</string>
+    <string name="detail_menu_share">分享</string>
+
+    <!-- Share -->
+    <string name="share_label">分享</string>
+
+</resources>

@@ -1,8 +1,10 @@
 package io.github.mthli.Cracker.Activity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.NotificationManager;
 import android.content.*;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.*;
 import android.widget.*;
@@ -64,7 +66,7 @@ public class MainActivity extends Activity {
                 adapter.notifyDataSetChanged();
                 break;
             case R.id.main_menu_about:
-                // TODO
+                showAboutDialog();
                 break;
             default:
                 break;
@@ -142,5 +144,44 @@ public class MainActivity extends Activity {
         }
 
         return super.onContextItemSelected(item);
+    }
+
+    private AlertDialog dialog;
+
+    private void showAboutDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.about_label);
+
+        View view = LayoutInflater.from(this).inflate(R.layout.about, null, false);
+        builder.setView(view);
+
+        builder.setPositiveButton(R.string.about_ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialog.hide();
+                dialog.dismiss();
+            }
+        });
+
+        builder.setNegativeButton(R.string.about_github, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.app_github)));
+                startActivity(intent);
+            }
+        });
+
+        builder.setNeutralButton(R.string.about_gmail, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:" + getString(R.string.app_email)));
+                startActivity(intent);
+            }
+        });
+
+        builder.setCancelable(true);
+
+        dialog = builder.create();
+        dialog.show();
     }
 }

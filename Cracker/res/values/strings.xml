@@ -1,5 +1,11 @@
 <resources>
 
+    <!-- About -->
+    <string name="about_label">About</string>
+    <string name="about_ok">OK</string>
+    <string name="about_github">GitHub</string>
+    <string name="about_gmail">Gmail</string>
+
     <!-- AndroidAgo -->
     <string name="just_now">Just Now</string>
 
@@ -15,8 +21,8 @@
     </string>
 
     <!-- Menu -->
-    <string name="main_menu_clear">Clear</string>
     <string name="main_menu_refresh">Refresh</string>
+    <string name="main_menu_clear">Clear</string>
     <string name="main_menu_about">About</string>
     <string name="context_menu_delete">Delete</string>
     <string name="context_menu_share">Share</string>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <string name="app_description">
+        收集未被捕获的应用程序崩溃异常。
+    </string>
+
+</resources>

@@ -7,5 +7,11 @@
     <string name="app_description">
         Collect UncaughtException when your App crash.
     </string>
+    <string name="app_github">
+        https://github.com/mthli/Cracker
+    </string>
+    <string name="app_email">
+        matthewlee0725@gmail.com
+    </string>
 
 </resources>
