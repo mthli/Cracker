@@ -1,7 +1,7 @@
 Cracker
 =======
 
-Collect `UncaughtException` when your android app crash.
+Collect `UncaughtException` when your Android App crash.
 
 ## How to use the source code?
 
