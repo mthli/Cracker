@@ -3,6 +3,12 @@ Cracker
 
 Collect `UncaughtException` when your Android App crash.
 
+To use this App you need to install [Xposed](https://github.com/rovo89/Xposed "Xposed") to your mobile phone.
+
+## Screenshot:
+
+![screenshot.png](/Art/screenshot.png "screenshot.png")
+
 ## How to use the source code?
 
 Just __import__ the `Cracker` folder with your __IntelliJ IDEA__.
