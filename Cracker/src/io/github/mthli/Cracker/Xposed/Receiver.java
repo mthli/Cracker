@@ -1,6 +1,7 @@
 package io.github.mthli.Cracker.Xposed;
 
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +11,8 @@ import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.TaskStackBuilder;
+import io.github.mthli.Cracker.Activity.DetailActivity;
 import io.github.mthli.Cracker.Crash.CrashItem;
 import io.github.mthli.Cracker.Crash.CrashUnit;
 import io.github.mthli.Cracker.Data.DataAction;
@@ -89,15 +92,23 @@ public class Receiver extends BroadcastReceiver {
         return builder.toString();
     }
 
-    // TODO
     private void showNotification() {
         NotificationManager manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
+
         builder.setSmallIcon(R.drawable.ic_notification_bug);
         builder.setLargeIcon(getBitmap(CrashUnit.getAppIcon(context, packageName)));
         builder.setContentTitle(CrashUnit.getAppName(context, packageName));
         builder.setContentText(throwable.toString());
         builder.setAutoCancel(true);
+
+        Intent intent = new Intent(context, DetailActivity.class);
+        intent.putExtra(context.getString(R.string.detain_intent_content), getContent(throwable));
+        TaskStackBuilder taskStackBuilder = TaskStackBuilder.create(context);
+        taskStackBuilder.addParentStack(DetailActivity.class);
+        taskStackBuilder.addNextIntent(intent);
+        builder.setContentIntent(taskStackBuilder.getPendingIntent(0, PendingIntent.FLAG_ONE_SHOT));
+
         manager.notify(CrashUnit.NOTIFICATION_ID, builder.build());
     }
 }
