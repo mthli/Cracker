@@ -1,6 +1,8 @@
 Cracker
 =======
 
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Cracker-green.svg?style=flat)](https://android-arsenal.com/details/1/2591)
+
 Collect `UncaughtException` when your Android App crash.
 
 To use this App you need to install [Xposed](https://github.com/rovo89/Xposed "Xposed") to your mobile phone.
